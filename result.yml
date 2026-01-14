@@ -30,6 +30,9 @@ tags:
   - name: Admin > Category
   - name: Admin > Sub Category
   - name: Admin > Product
+  - name: Admin > Site Settings
+  - name: Admin > Contact Us
+  - name: Admin > Faq
 paths:
   /api/admin/auth/login:
     post:
@@ -628,6 +631,240 @@ paths:
       tags:
         - Admin > Product
       summary: show product by sub category
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/site-settings:
+    post:
+      tags:
+        - Admin > Site Settings
+      summary: store site settings
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                store_name:
+                  type: string
+                  example: SK Furniture
+                slogan:
+                  type: string
+                logo:
+                  type: string
+                  format: binary
+                fav_icon:
+                  type: string
+                address:
+                  type: string
+                contact_no:
+                  type: string
+                email:
+                  type: string
+                home_page_banner_1:
+                  type: string
+                home_page_banner_2:
+                  type: string
+                home_page_banner_3:
+                  type: string
+                privacy_policy:
+                  type: string
+                terms_conditions:
+                  type: string
+                facebook_link:
+                  type: string
+                instagram_link:
+                  type: string
+                tiktok_link:
+                  type: string
+                whatsapp_number:
+                  type: string
+                about_us:
+                  type: string
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Site Settings
+      summary: show all site settings
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/contact-us:
+    get:
+      tags:
+        - Admin > Contact Us
+      summary: show all contact us
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/contact-us/{id}:
+    delete:
+      tags:
+        - Admin > Contact Us
+      summary: delete contact us
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/faqs:
+    post:
+      tags:
+        - Admin > Faq
+      summary: store faq
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: hy
+                answer:
+                  type: string
+                  example: hy
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Faq
+      summary: show all faqs
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: pagination_limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/faqs/{id}:
+    post:
+      tags:
+        - Admin > Faq
+      summary: update faq store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                question:
+                  type: string
+                  example: hy
+                answer:
+                  type: string
+                  example: hy
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Admin > Faq
+      summary: delete faq
       security:
         - bearerAuth: []
       parameters:
