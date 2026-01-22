@@ -1,1421 +1,1714 @@
 {
-	"info": {
-		"_postman_id": "54bba2cf-f8dd-46ec-895a-4f2bc9352691",
-		"name": "SK Furniture",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "36246021",
-		"_collection_link": "https://mero-vision.postman.co/workspace/Team-Workspace~1395415a-98af-4bc5-853c-6265c2c2d0cd/collection/36246021-54bba2cf-f8dd-46ec-895a-4f2bc9352691?action=share&source=collection_link&creator=36246021"
-	},
-	"item": [
-		{
-			"name": "Admin",
-			"item": [
-				{
-					"name": "Auth",
-					"item": [
-						{
-							"name": "admin login",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"const response = pm.response.json()\r",
-											"pm.environment.set('token', response.data.access_token)\r",
-											"pm.environment.set('refresh_token', response.data.refresh_token)"
-										],
-										"type": "text/javascript",
-										"packages": {},
-										"requests": {}
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "admin@gmail.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "Password",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/auth/login",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"auth",
-										"login"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Admin",
-					"item": [
-						{
-							"name": "show admin profile detail",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "admin@gmail.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "Password",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/user/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"user",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "logout",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/admin/logout",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"logout"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Category",
-					"item": [
-						{
-							"name": "store category data",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "name",
-											"value": "iPhone",
-											"type": "text"
-										},
-										{
-											"key": "parent_id",
-											"value": "1",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "hy",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/categories",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"categories"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update category data",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "name",
-											"value": "iPhone",
-											"type": "text"
-										},
-										{
-											"key": "parent_id",
-											"value": "2",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": "hy",
-											"type": "text"
-										},
-										{
-											"key": "_method",
-											"value": "PUT",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/categories/{slug}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"categories",
-										"{slug}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show all category list",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/categories",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"categories"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show single category",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/categories/{slug}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"categories",
-										"{slug}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Sub Category",
-					"item": [
-						{
-							"name": "show all subcategory",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "logo",
-											"type": "file",
-											"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/sub-categories",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"sub-categories"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show single sub category data",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/admin/sub-categories/{slug}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"sub-categories",
-										"{slug}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Product",
-					"item": [
-						{
-							"name": "store product data",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "sub_category_id",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "name",
-											"value": " Organic Mustard Oil 2L",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": " 100% pure sunflower oil.",
-											"type": "text"
-										},
-										{
-											"key": "sale_price",
-											"value": " 450",
-											"type": "text"
-										},
-										{
-											"key": "cross_price",
-											"value": " 350",
-											"type": "text"
-										},
-										{
-											"key": "is_featured",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "is_active",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "specifications",
-											"value": " {\"brand\":\"PureSun\",\"weight\":\"1L\",\"type\":\"Refined\",\"packaging\":\"Plastic Bottle\"}",
-											"type": "text"
-										},
-										{
-											"key": "product_image[]",
-											"type": "file",
-											"src": "/C:/Users/user/Videos/Screenshot 2025-08-16 020628.png"
-										},
-										{
-											"key": "product_image[]",
-											"type": "file",
-											"src": "/C:/Users/user/Videos/Screenshot 2025-08-23 191844.png"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/products",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update product data",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "sub_category_id",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "name",
-											"value": " Organic Mustard Oil 2L",
-											"type": "text"
-										},
-										{
-											"key": "description",
-											"value": " 100% pure sunflower oil.",
-											"type": "text"
-										},
-										{
-											"key": "sale_price",
-											"value": " 450",
-											"type": "text"
-										},
-										{
-											"key": "cross_price",
-											"value": " 350",
-											"type": "text"
-										},
-										{
-											"key": "is_featured",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "is_active",
-											"value": " 1",
-											"type": "text"
-										},
-										{
-											"key": "specifications",
-											"value": " {\"brand\":\"PureSun\",\"weight\":\"1L\",\"type\":\"Refined\",\"packaging\":\"Plastic Bottle\"}",
-											"type": "text"
-										},
-										{
-											"key": "product_image[]",
-											"type": "file",
-											"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/products/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show all product list",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/products?pagination_limit=10&search_keyword",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products"
-									],
-									"query": [
-										{
-											"key": "pagination_limit",
-											"value": "10"
-										},
-										{
-											"key": "search_keyword",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "show all product list",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "formdata",
-											"formdata": [
-												{
-													"key": "product_image[]",
-													"type": "file",
-													"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
-												}
-											]
-										},
-										"url": {
-											"raw": "{{url}}/api/admin/products?pagination_limit=10&search_keyword",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"admin",
-												"products"
-											],
-											"query": [
-												{
-													"key": "pagination_limit",
-													"value": "10"
-												},
-												{
-													"key": "search_keyword",
-													"value": null
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": null,
-									"header": [
-										{
-											"key": "Host",
-											"value": "127.0.0.1:8000"
-										},
-										{
-											"key": "Connection",
-											"value": "close"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.3.14"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "Date",
-											"value": "Mon, 10 Nov 2025 11:50:16 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"category_id\": 2,\n            \"product_unit_id\": 1,\n            \"name\": \"Apsara Pencil1\",\n            \"slug\": \"apsara-pencil1\",\n            \"description\": \"High-quality graphite pencil for smooth writing.\",\n            \"selling_price\": \"50.00\",\n            \"wholesale_price\": \"32.00\",\n            \"cost_price\": \"25.00\",\n            \"stock_quantity\": \"100.00\",\n            \"sku\": \"APSARA-PEN-002\",\n            \"product_weight\": \"15\",\n            \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n            \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n            \"meta_keywords\": \"pencil, apsara, stationary\",\n            \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n            \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n            \"created_at\": \"2025-11-10T11:48:17.000000Z\",\n            \"updated_at\": \"2025-11-10T11:48:17.000000Z\",\n            \"product_images\": [\n                {\n                    \"id\": 2,\n                    \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"url\": \"http://localhost:8000/storage/2/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"created_at\": \"2025-11-10T11:48:17.000000Z\"\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"category_id\": 2,\n            \"product_unit_id\": 1,\n            \"name\": \"Apsara Pencil\",\n            \"slug\": null,\n            \"description\": \"High-quality graphite pencil for smooth writing.\",\n            \"selling_price\": \"50.00\",\n            \"wholesale_price\": \"32.00\",\n            \"cost_price\": \"25.00\",\n            \"stock_quantity\": \"100.00\",\n            \"sku\": \"APSARA-PEN-001\",\n            \"product_weight\": \"15\",\n            \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n            \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n            \"meta_keywords\": \"pencil, apsara, stationary\",\n            \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n            \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n            \"created_at\": \"2025-11-10T10:46:30.000000Z\",\n            \"updated_at\": \"2025-11-10T10:46:30.000000Z\",\n            \"product_images\": [\n                {\n                    \"id\": 1,\n                    \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"url\": \"http://localhost:8000/storage/1/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"created_at\": \"2025-11-10T10:46:30.000000Z\"\n                }\n            ]\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/admin/products\",\n        \"per_page\": 10,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "show single product data",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/products/{slug}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products",
-										"{slug}"
-									]
-								}
-							},
-							"response": [
-								{
-									"name": "show single product data",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"key": "Accept",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "formdata",
-											"formdata": []
-										},
-										"url": {
-											"raw": "{{url}}/api/admin/products/{slug}",
-											"host": [
-												"{{url}}"
-											],
-											"path": [
-												"api",
-												"admin",
-												"products",
-												"{slug}"
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": null,
-									"header": [
-										{
-											"key": "Host",
-											"value": "127.0.0.1:8000"
-										},
-										{
-											"key": "Connection",
-											"value": "close"
-										},
-										{
-											"key": "X-Powered-By",
-											"value": "PHP/8.3.14"
-										},
-										{
-											"key": "Cache-Control",
-											"value": "no-cache, private"
-										},
-										{
-											"key": "Date",
-											"value": "Mon, 10 Nov 2025 11:50:34 GMT"
-										},
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										},
-										{
-											"key": "Access-Control-Allow-Origin",
-											"value": "*"
-										}
-									],
-									"cookie": [],
-									"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"category_id\": 2,\n        \"product_unit_id\": 1,\n        \"name\": \"Apsara Pencil1\",\n        \"slug\": \"apsara-pencil1\",\n        \"description\": \"High-quality graphite pencil for smooth writing.\",\n        \"selling_price\": \"50.00\",\n        \"wholesale_price\": \"32.00\",\n        \"cost_price\": \"25.00\",\n        \"stock_quantity\": \"100.00\",\n        \"sku\": \"APSARA-PEN-002\",\n        \"product_weight\": \"15\",\n        \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n        \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n        \"meta_keywords\": \"pencil, apsara, stationary\",\n        \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n        \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n        \"created_at\": \"2025-11-10T11:48:17.000000Z\",\n        \"updated_at\": \"2025-11-10T11:48:17.000000Z\",\n        \"product_images\": [\n            {\n                \"id\": 2,\n                \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                \"url\": \"http://localhost:8000/storage/2/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                \"created_at\": \"2025-11-10T11:48:17.000000Z\"\n            }\n        ]\n    }\n}"
-								}
-							]
-						},
-						{
-							"name": "delete product",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/admin/products/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show product by sub category",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"url": {
-									"raw": "{{url}}/api/admin/products-by-subcategory/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"products-by-subcategory",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Site Settings",
-					"item": [
-						{
-							"name": "store site settings",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "store_name",
-											"value": "SK Furniture",
-											"type": "text"
-										},
-										{
-											"key": "slogan",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "logo",
-											"type": "file",
-											"src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
-										},
-										{
-											"key": "fav_icon",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "address",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "contact_no",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "email",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "home_page_banner_1",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "home_page_banner_2",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "home_page_banner_3",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "privacy_policy",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "terms_conditions",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "facebook_link",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "instagram_link",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "tiktok_link",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "whatsapp_number",
-											"value": "",
-											"type": "text"
-										},
-										{
-											"key": "about_us",
-											"value": "",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/site-settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"site-settings"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show all site settings",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/site-settings",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"site-settings"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Contact Us",
-					"item": [
-						{
-							"name": "show all contact us",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/contact-us",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"contact-us"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete contact us",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/contact-us/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"contact-us",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Faq",
-					"item": [
-						{
-							"name": "store faq",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "question",
-											"value": "hy",
-											"type": "text"
-										},
-										{
-											"key": "answer",
-											"value": "hy",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/faqs",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"faqs"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update faq store",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "question",
-											"value": "hy",
-											"type": "text"
-										},
-										{
-											"key": "answer",
-											"value": "hy",
-											"type": "text"
-										},
-										{
-											"key": "_method",
-											"value": "PUT",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/faqs/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"faqs",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "show all faqs",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/faqs?pagination_limit=10&search_keyword",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"faqs"
-									],
-									"query": [
-										{
-											"key": "pagination_limit",
-											"value": "10"
-										},
-										{
-											"key": "search_keyword",
-											"value": null
-										}
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete faq",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "{{token}}",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{url}}/api/admin/faqs/{id}",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"api",
-										"admin",
-										"faqs",
-										"{id}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		}
-	]
+  "info": {
+    "_postman_id": "54bba2cf-f8dd-46ec-895a-4f2bc9352691",
+    "name": "SK Furniture",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "36246021",
+    "_collection_link": "https://go.postman.co/collection/36246021-54bba2cf-f8dd-46ec-895a-4f2bc9352691?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "admin login",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "const response = pm.response.json()\r",
+                      "pm.environment.set('token', response.data.access_token)\r",
+                      "pm.environment.set('refresh_token', response.data.refresh_token)"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "admin@gmail.com",
+                      "type": "text",
+                      "uuid": "93da396c-4782-4efc-b8aa-2ea802c1500b"
+                    },
+                    {
+                      "key": "password",
+                      "value": "Password",
+                      "type": "text",
+                      "uuid": "8ad0404c-3f88-4a92-9e6f-231e87b8f18d"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/auth/login",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Admin",
+          "item": [
+            {
+              "name": "show admin profile detail",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "email",
+                      "value": "admin@gmail.com",
+                      "type": "text",
+                      "uuid": "93da396c-4782-4efc-b8aa-2ea802c1500b"
+                    },
+                    {
+                      "key": "password",
+                      "value": "Password",
+                      "type": "text",
+                      "uuid": "8ad0404c-3f88-4a92-9e6f-231e87b8f18d"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/user/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "user",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "logout",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/logout",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "logout"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Category",
+          "item": [
+            {
+              "name": "store category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "Macbook",
+                      "type": "text",
+                      "uuid": "d2cad83a-7fb2-4069-8a60-cd5706bb7ced"
+                    },
+                    {
+                      "key": "category_image",
+                      "type": "file",
+                      "uuid": "8e8eb29e-e672-4b8a-9493-ad38a6974af6",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-14 at 11.22.51 PM.jpeg"
+                    },
+                    {
+                      "key": "parent_id",
+                      "value": "1",
+                      "type": "text",
+                      "uuid": "7a86635d-44ff-467f-927d-f881ba3041b1"
+                    },
+                    {
+                      "key": "description",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "f82bd42e-e8f5-45e0-b815-a1c1aefc884b"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "iPhone",
+                      "type": "text",
+                      "uuid": "d2cad83a-7fb2-4069-8a60-cd5706bb7ced"
+                    },
+                    {
+                      "key": "parent_id",
+                      "value": "2",
+                      "type": "text",
+                      "uuid": "7a86635d-44ff-467f-927d-f881ba3041b1"
+                    },
+                    {
+                      "key": "description",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "f82bd42e-e8f5-45e0-b815-a1c1aefc884b"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "ae542b98-fa42-4e0c-a350-614643735cd6"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/categories/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all category list",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single category",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/categories/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Sub Category",
+          "item": [
+            {
+              "name": "show all subcategory",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "logo",
+                      "type": "file",
+                      "uuid": "11e9704e-32f9-4642-9e1e-b00bd751027b",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/sub-categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "sub-categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single sub category data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/sub-categories/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "sub-categories",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Product",
+          "item": [
+            {
+              "name": "store product data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "sub_category_id",
+                      "value": " 1",
+                      "type": "text",
+                      "uuid": "f9045adf-876d-4725-bc70-def4dfc8c4d1"
+                    },
+                    {
+                      "key": "name",
+                      "value": " Organic Mustard Oil 2L",
+                      "type": "text",
+                      "uuid": "44f0f104-82fa-4530-a0de-bdb891dabcd5"
+                    },
+                    {
+                      "key": "description",
+                      "value": " 100% pure sunflower oil.",
+                      "type": "text",
+                      "uuid": "51a71629-4520-4619-97dd-542c5943d015"
+                    },
+                    {
+                      "key": "sale_price",
+                      "value": " 450",
+                      "type": "text"
+                    },
+                    {
+                      "key": "cross_price",
+                      "value": " 350",
+                      "type": "text",
+                      "uuid": "9b910141-9f13-48f1-93e9-0a3e62c00b9c"
+                    },
+                    {
+                      "key": "is_featured",
+                      "value": " 1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": " 1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "specifications",
+                      "value": " {\"brand\":\"PureSun\",\"weight\":\"1L\",\"type\":\"Refined\",\"packaging\":\"Plastic Bottle\"}",
+                      "type": "text",
+                      "uuid": "3720fd75-a564-465e-a654-95bc495fa164"
+                    },
+                    {
+                      "key": "product_image[]",
+                      "type": "file",
+                      "uuid": "bbcfcc3f-cb77-4971-bf71-357cbcd0a712",
+                      "src": "/C:/Users/user/Videos/Screenshot 2025-08-16 020628.png"
+                    },
+                    {
+                      "key": "product_image[]",
+                      "type": "file",
+                      "uuid": "bbcfcc3f-cb77-4971-bf71-357cbcd0a712",
+                      "src": "/C:/Users/user/Videos/Screenshot 2025-08-23 191844.png"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/products",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update product data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "sub_category_id",
+                      "value": " 1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "name",
+                      "value": " Organic Mustard Oil 2L",
+                      "type": "text"
+                    },
+                    {
+                      "key": "description",
+                      "value": " 100% pure sunflower oil.",
+                      "type": "text"
+                    },
+                    {
+                      "key": "sale_price",
+                      "value": " 450",
+                      "type": "text"
+                    },
+                    {
+                      "key": "cross_price",
+                      "value": " 350",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_featured",
+                      "value": " 1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "is_active",
+                      "value": " 1",
+                      "type": "text"
+                    },
+                    {
+                      "key": "specifications",
+                      "value": " {\"brand\":\"PureSun\",\"weight\":\"1L\",\"type\":\"Refined\",\"packaging\":\"Plastic Bottle\"}",
+                      "type": "text"
+                    },
+                    {
+                      "key": "product_image[]",
+                      "type": "file",
+                      "uuid": "bbcfcc3f-cb77-4971-bf71-357cbcd0a712",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/products/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all product list",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/products?pagination_limit=10&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "show all product list",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": [
+                        {
+                          "key": "product_image[]",
+                          "type": "file",
+                          "uuid": "bbcfcc3f-cb77-4971-bf71-357cbcd0a712",
+                          "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                        }
+                      ]
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/products?pagination_limit=10&search_keyword",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "products"
+                      ],
+                      "query": [
+                        {
+                          "key": "pagination_limit",
+                          "value": "10"
+                        },
+                        {
+                          "key": "search_keyword",
+                          "value": null
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Host",
+                      "value": "127.0.0.1:8000"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "PHP/8.3.14"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 10 Nov 2025 11:50:16 GMT"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"category_id\": 2,\n            \"product_unit_id\": 1,\n            \"name\": \"Apsara Pencil1\",\n            \"slug\": \"apsara-pencil1\",\n            \"description\": \"High-quality graphite pencil for smooth writing.\",\n            \"selling_price\": \"50.00\",\n            \"wholesale_price\": \"32.00\",\n            \"cost_price\": \"25.00\",\n            \"stock_quantity\": \"100.00\",\n            \"sku\": \"APSARA-PEN-002\",\n            \"product_weight\": \"15\",\n            \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n            \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n            \"meta_keywords\": \"pencil, apsara, stationary\",\n            \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n            \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n            \"created_at\": \"2025-11-10T11:48:17.000000Z\",\n            \"updated_at\": \"2025-11-10T11:48:17.000000Z\",\n            \"product_images\": [\n                {\n                    \"id\": 2,\n                    \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"url\": \"http://localhost:8000/storage/2/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"created_at\": \"2025-11-10T11:48:17.000000Z\"\n                }\n            ]\n        },\n        {\n            \"id\": 1,\n            \"category_id\": 2,\n            \"product_unit_id\": 1,\n            \"name\": \"Apsara Pencil\",\n            \"slug\": null,\n            \"description\": \"High-quality graphite pencil for smooth writing.\",\n            \"selling_price\": \"50.00\",\n            \"wholesale_price\": \"32.00\",\n            \"cost_price\": \"25.00\",\n            \"stock_quantity\": \"100.00\",\n            \"sku\": \"APSARA-PEN-001\",\n            \"product_weight\": \"15\",\n            \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n            \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n            \"meta_keywords\": \"pencil, apsara, stationary\",\n            \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n            \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n            \"created_at\": \"2025-11-10T10:46:30.000000Z\",\n            \"updated_at\": \"2025-11-10T10:46:30.000000Z\",\n            \"product_images\": [\n                {\n                    \"id\": 1,\n                    \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"url\": \"http://localhost:8000/storage/1/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                    \"created_at\": \"2025-11-10T10:46:30.000000Z\"\n                }\n            ]\n        }\n    ],\n    \"links\": {\n        \"first\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n        \"last\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n        \"prev\": null,\n        \"next\": null\n    },\n    \"meta\": {\n        \"current_page\": 1,\n        \"from\": 1,\n        \"last_page\": 1,\n        \"links\": [\n            {\n                \"url\": null,\n                \"label\": \"&laquo; Previous\",\n                \"page\": null,\n                \"active\": false\n            },\n            {\n                \"url\": \"http://127.0.0.1:8000/api/admin/products?page=1\",\n                \"label\": \"1\",\n                \"page\": 1,\n                \"active\": true\n            },\n            {\n                \"url\": null,\n                \"label\": \"Next &raquo;\",\n                \"page\": null,\n                \"active\": false\n            }\n        ],\n        \"path\": \"http://127.0.0.1:8000/api/admin/products\",\n        \"per_page\": 10,\n        \"to\": 2,\n        \"total\": 2\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "show single product data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/products/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "show single product data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                      }
+                    ],
+                    "body": {
+                      "mode": "formdata",
+                      "formdata": []
+                    },
+                    "url": {
+                      "raw": "{{url}}/api/admin/products/{slug}",
+                      "host": [
+                        "{{url}}"
+                      ],
+                      "path": [
+                        "api",
+                        "admin",
+                        "products",
+                        "{slug}"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": null,
+                  "header": [
+                    {
+                      "key": "Host",
+                      "value": "127.0.0.1:8000"
+                    },
+                    {
+                      "key": "Connection",
+                      "value": "close"
+                    },
+                    {
+                      "key": "X-Powered-By",
+                      "value": "PHP/8.3.14"
+                    },
+                    {
+                      "key": "Cache-Control",
+                      "value": "no-cache, private"
+                    },
+                    {
+                      "key": "Date",
+                      "value": "Mon, 10 Nov 2025 11:50:34 GMT"
+                    },
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    },
+                    {
+                      "key": "Access-Control-Allow-Origin",
+                      "value": "*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n    \"data\": {\n        \"id\": 2,\n        \"category_id\": 2,\n        \"product_unit_id\": 1,\n        \"name\": \"Apsara Pencil1\",\n        \"slug\": \"apsara-pencil1\",\n        \"description\": \"High-quality graphite pencil for smooth writing.\",\n        \"selling_price\": \"50.00\",\n        \"wholesale_price\": \"32.00\",\n        \"cost_price\": \"25.00\",\n        \"stock_quantity\": \"100.00\",\n        \"sku\": \"APSARA-PEN-002\",\n        \"product_weight\": \"15\",\n        \"meta_title\": \"Apsara Pencil - Smooth Writing\",\n        \"meta_description\": \"Buy Apsara Pencil for school and office use.\",\n        \"meta_keywords\": \"pencil, apsara, stationary\",\n        \"attributes\": \"{\\\"color\\\": \\\"black\\\", \\\"material\\\": \\\"wood\\\"}\",\n        \"specifications\": \"{\\\"length\\\": \\\"7 inch\\\", \\\"hardness\\\": \\\"HB\\\"}\",\n        \"created_at\": \"2025-11-10T11:48:17.000000Z\",\n        \"updated_at\": \"2025-11-10T11:48:17.000000Z\",\n        \"product_images\": [\n            {\n                \"id\": 2,\n                \"file_name\": \"Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                \"url\": \"http://localhost:8000/storage/2/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg\",\n                \"created_at\": \"2025-11-10T11:48:17.000000Z\"\n            }\n        ]\n    }\n}"
+                }
+              ]
+            },
+            {
+              "name": "delete product",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/products/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show product by sub category",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/products-by-subcategory/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "products-by-subcategory",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Settings",
+          "item": [
+            {
+              "name": "store site settings",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "store_name",
+                      "value": "SK Furniture",
+                      "type": "text",
+                      "uuid": "c977df13-88ba-4a12-a2c8-9e6f622e240e"
+                    },
+                    {
+                      "key": "slogan",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "915ddc74-cbaa-4c31-9be2-c0650cdc6722"
+                    },
+                    {
+                      "key": "logo",
+                      "type": "file",
+                      "uuid": "11e9704e-32f9-4642-9e1e-b00bd751027b",
+                      "src": "/Users/hanciephago/Desktop/Black-and-Red-Simple-Car-Icon-Industrial-Logo-(6).jpeg"
+                    },
+                    {
+                      "key": "fav_icon",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "0ed71ef3-2db7-4f09-b9cd-faedaddb9717"
+                    },
+                    {
+                      "key": "address",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "f977b509-e2d4-4af8-a8d2-752a172acca1"
+                    },
+                    {
+                      "key": "contact_no",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "3618368e-7703-4b9d-b99a-a4de85d77ed2"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "2c72d45c-e267-4501-b126-4e15f6477e88"
+                    },
+                    {
+                      "key": "home_page_banner_1",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "30fc2979-8a23-4d4b-b744-060213e5b888"
+                    },
+                    {
+                      "key": "home_page_banner_2",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "21d565c8-d7c6-4432-90df-cdfa10c008f2"
+                    },
+                    {
+                      "key": "home_page_banner_3",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "f5dda149-9519-4404-bdf7-237b56a603c5"
+                    },
+                    {
+                      "key": "privacy_policy",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "98e0f370-bb1c-4e7a-a144-8f4e175518c0"
+                    },
+                    {
+                      "key": "terms_conditions",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "692f520c-51de-43c4-bd29-99ed418eef8f"
+                    },
+                    {
+                      "key": "facebook_link",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8f92988c-ea9d-4c9c-bc6b-99e665fabf39"
+                    },
+                    {
+                      "key": "instagram_link",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "9817ddd3-77ea-4be9-8a9a-bdf209863051"
+                    },
+                    {
+                      "key": "tiktok_link",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "9b51aacd-68a8-4d36-8e68-97b5a575668b"
+                    },
+                    {
+                      "key": "whatsapp_number",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "63d37ca6-63c3-4d46-8763-717d41104b4a"
+                    },
+                    {
+                      "key": "about_us",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "8a6c00be-820b-4e82-8a08-a17de8dad34d"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/site-settings",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all site settings",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/site-settings",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Contact Us",
+          "item": [
+            {
+              "name": "show all contact us",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/contact-us",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "contact-us"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete contact us",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/contact-us/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "contact-us",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Faq",
+          "item": [
+            {
+              "name": "store faq",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "question",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "9832359f-e700-43fa-8461-aff4e999383d"
+                    },
+                    {
+                      "key": "answer",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "2d0e191a-0f63-48a5-b039-a84ea60c67a0"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/faqs",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "faqs"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "update faq store",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "question",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "9832359f-e700-43fa-8461-aff4e999383d"
+                    },
+                    {
+                      "key": "answer",
+                      "value": "hy",
+                      "type": "text",
+                      "uuid": "2d0e191a-0f63-48a5-b039-a84ea60c67a0"
+                    },
+                    {
+                      "key": "_method",
+                      "value": "PUT",
+                      "type": "text",
+                      "uuid": "455d4663-9a3d-46fc-ae2b-3cf9294f6527"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/faqs/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "faqs",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all faqs",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/faqs?pagination_limit=10&search_keyword",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "faqs"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "delete faq",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/faqs/{id}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "faqs",
+                    "{id}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Website",
+      "item": [
+        {
+          "name": "Product",
+          "item": [
+            {
+              "name": "show all product list",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/products?pagination_limit=8&search_keyword&sub_category_id=1",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products"
+                  ],
+                  "query": [
+                    {
+                      "key": "pagination_limit",
+                      "value": "8"
+                    },
+                    {
+                      "key": "search_keyword",
+                      "value": null
+                    },
+                    {
+                      "key": "sub_category_id",
+                      "value": "1"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show single product list",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/products/{slug}",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "products",
+                    "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Settings",
+          "item": [
+            {
+              "name": "show site settings data",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/site-settings",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "site-settings"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Category",
+          "item": [
+            {
+              "name": "show all category list",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show all subcategories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{url}}/api/sub-categories",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sub-categories"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Contact Us",
+          "item": [
+            {
+              "name": "store contact us data",
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "name",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "1de91ccc-e8c8-42e4-b3a5-db7142b024da"
+                    },
+                    {
+                      "key": "email",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "15cbe9d6-b59e-43ee-9363-2a002b4a0717"
+                    },
+                    {
+                      "key": "mobile_no",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "9346c5db-1945-4ff5-98a8-ebe90f5aa358"
+                    },
+                    {
+                      "key": "subject",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "c56b480d-1e00-4491-8ed2-faf4cefe6e2c"
+                    },
+                    {
+                      "key": "message",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "cf0df20d-71bd-4dd4-b0f6-e3351a5f81af"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/contact-us",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "contact-us"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Faq",
+          "item": [
+            {
+              "name": "show all faqs",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": []
+                },
+                "url": {
+                  "raw": "{{url}}/api/faqs",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "faqs"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
