@@ -36,12 +36,15 @@ tags:
   - name: Admin > Site Settings
   - name: Admin > Contact Us
   - name: Admin > Faq
+  - name: Admin > Dashboard
+  - name: Admin > Site Banner
   - name: Website
   - name: Website > Product
   - name: Website > Site Settings
   - name: Website > Category
   - name: Website > Contact Us
   - name: Website > Faq
+  - name: Website > Site Banner
 paths:
   /api/admin/auth/login:
     post:
@@ -895,6 +898,98 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/admin/dashboard:
+    get:
+      tags:
+        - Admin > Dashboard
+      summary: show dashboard data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/admin/site-banners:
+    post:
+      tags:
+        - Admin > Site Banner
+      summary: store site banner data
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                mid_page_image:
+                  type: string
+                  format: binary
+                mid_page_title:
+                  type: string
+                  example: |-
+                    Great Deals On
+                    Furniture
+                mid_page_btn_text:
+                  type: string
+                  example: Explore Collection
+                mid_page_btn_link:
+                  type: string
+                  example: https://skfurniture.store/
+                mid_page_small_text:
+                  type: string
+                  example: 25% OFF store by SK Furniture
+                mid_page_2_image:
+                  type: string
+                  format: binary
+                mid_page_2_title:
+                  type: string
+                mid_page_2_btn_text:
+                  type: string
+                mid_page_2_btn_link:
+                  type: string
+                mid_page_2_small_text:
+                  type: string
+                mid_page_2_description:
+                  type: string
+                mid_page_3_image:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Admin > Site Banner
+      summary: show site banner data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/products:
     get:
       tags:
@@ -932,6 +1027,29 @@ paths:
       summary: show single product list
       parameters:
         - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/sub-categories/{subCategoryId}/products:
+    get:
+      tags:
+        - Website > Product
+      summary: show products by sub category id
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+        - name: subCategoryId
           in: path
           schema:
             type: string
@@ -1012,6 +1130,24 @@ paths:
       summary: show all faqs
       security:
         - bearerAuth: []
+      parameters:
+        - name: Accept
+          in: header
+          schema:
+            type: string
+          example: application/json
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/site-banners:
+    get:
+      tags:
+        - Website > Site Banner
+      summary: show site banner data
+      security:
+        - noauthAuth: []
       parameters:
         - name: Accept
           in: header
