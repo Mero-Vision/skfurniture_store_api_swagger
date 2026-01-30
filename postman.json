@@ -1463,6 +1463,198 @@
               "response": []
             }
           ]
+        },
+        {
+          "name": "Dashboard",
+          "item": [
+            {
+              "name": "show dashboard data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/dashboard",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "dashboard"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Banner",
+          "item": [
+            {
+              "name": "store site banner data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "mid_page_image",
+                      "type": "file",
+                      "uuid": "1f6400ac-a9bd-49fa-9f36-b9045c416f91",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.49.42 AM.jpeg"
+                    },
+                    {
+                      "key": "mid_page_title",
+                      "value": "Great Deals On\nFurniture",
+                      "type": "text",
+                      "uuid": "f8601a78-ce03-424a-aa5c-5338b573a525"
+                    },
+                    {
+                      "key": "mid_page_btn_text",
+                      "value": "Explore Collection",
+                      "type": "text",
+                      "uuid": "ff159f26-b98d-4dc7-bc9b-bb130cf111cc"
+                    },
+                    {
+                      "key": "mid_page_btn_link",
+                      "value": "https://skfurniture.store/",
+                      "type": "text",
+                      "uuid": "b4fed0eb-736c-4808-904d-08d6df513578"
+                    },
+                    {
+                      "key": "mid_page_small_text",
+                      "value": "25% OFF store by SK Furniture",
+                      "type": "text",
+                      "uuid": "fb0d8fec-86c0-4d31-b7d7-78f5da9f0e97"
+                    },
+                    {
+                      "key": "mid_page_2_image",
+                      "type": "file",
+                      "uuid": "49394d4c-91a8-4e91-8461-70e07a9468dd",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.58.12 AM4.jpeg"
+                    },
+                    {
+                      "key": "mid_page_2_title",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ea7e12aa-bf25-46cf-9d08-9743cb66e20a"
+                    },
+                    {
+                      "key": "mid_page_2_btn_text",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "27a3dca7-e174-41e1-8b8c-5905395eb57f"
+                    },
+                    {
+                      "key": "mid_page_2_btn_link",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "e4438159-ffae-4b66-a4af-2a72915a1675"
+                    },
+                    {
+                      "key": "mid_page_2_small_text",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "95c73480-1581-43cf-92df-d43054d1be35"
+                    },
+                    {
+                      "key": "mid_page_2_description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "15b31a67-ae20-447a-9d7b-28e102db91bd"
+                    },
+                    {
+                      "key": "mid_page_3_image",
+                      "type": "file",
+                      "uuid": "1004cfe3-bb86-4a7c-8ee8-e0a38b33d51c",
+                      "value": null
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/admin/site-banners",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "site-banners"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show site banner data",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/admin/site-banners",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "admin",
+                    "site-banners"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -1524,6 +1716,42 @@
                     "api",
                     "products",
                     "{slug}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "show products by sub category id",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{token}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{url}}/api/sub-categories/{subCategoryId}/products",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "sub-categories",
+                    "{subCategoryId}",
+                    "products"
                   ]
                 }
               },
@@ -1701,6 +1929,112 @@
                   "path": [
                     "api",
                     "faqs"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Site Banner",
+          "item": [
+            {
+              "name": "show site banner data",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "noauth"
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "mid_page_image",
+                      "type": "file",
+                      "uuid": "1f6400ac-a9bd-49fa-9f36-b9045c416f91",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.49.42 AM.jpeg"
+                    },
+                    {
+                      "key": "mid_page_title",
+                      "value": "Great Deals On\nFurniture",
+                      "type": "text",
+                      "uuid": "f8601a78-ce03-424a-aa5c-5338b573a525"
+                    },
+                    {
+                      "key": "mid_page_btn_text",
+                      "value": "Explore Collection",
+                      "type": "text",
+                      "uuid": "ff159f26-b98d-4dc7-bc9b-bb130cf111cc"
+                    },
+                    {
+                      "key": "mid_page_btn_link",
+                      "value": "https://skfurniture.store/",
+                      "type": "text",
+                      "uuid": "b4fed0eb-736c-4808-904d-08d6df513578"
+                    },
+                    {
+                      "key": "mid_page_small_text",
+                      "value": "25% OFF store by SK Furniture",
+                      "type": "text",
+                      "uuid": "fb0d8fec-86c0-4d31-b7d7-78f5da9f0e97"
+                    },
+                    {
+                      "key": "mid_page_2_image",
+                      "type": "file",
+                      "uuid": "49394d4c-91a8-4e91-8461-70e07a9468dd",
+                      "src": "/C:/Users/user/Videos/WhatsApp Image 2026-01-28 at 8.58.12 AM4.jpeg"
+                    },
+                    {
+                      "key": "mid_page_2_title",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "ea7e12aa-bf25-46cf-9d08-9743cb66e20a"
+                    },
+                    {
+                      "key": "mid_page_2_btn_text",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "27a3dca7-e174-41e1-8b8c-5905395eb57f"
+                    },
+                    {
+                      "key": "mid_page_2_btn_link",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "e4438159-ffae-4b66-a4af-2a72915a1675"
+                    },
+                    {
+                      "key": "mid_page_2_small_text",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "95c73480-1581-43cf-92df-d43054d1be35"
+                    },
+                    {
+                      "key": "mid_page_2_description",
+                      "value": "",
+                      "type": "text",
+                      "uuid": "15b31a67-ae20-447a-9d7b-28e102db91bd"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{url}}/api/site-banners",
+                  "host": [
+                    "{{url}}"
+                  ],
+                  "path": [
+                    "api",
+                    "site-banners"
                   ]
                 }
               },
